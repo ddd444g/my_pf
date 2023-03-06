@@ -21,8 +21,8 @@
        <tr>
          <td><%= user.id %></td>
          <td><%= user.name %></td>
-         <td><%= user.updated_at.to_s(:datetime_jp) %></td>
-         <td><%= user.created_at.to_s(:datetime_jp) %></td>
+         <td><%= user.updated_at.to_fs(:datetime_jp) %></td>
+         <td><%= user.created_at.to_fs(:datetime_jp) %></td>
          <td><%= link_to "参照", user %></td>
          <td><%= link_to "編集", [:edit, user] %></td>
          <td><%= button_to "削除", user, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
