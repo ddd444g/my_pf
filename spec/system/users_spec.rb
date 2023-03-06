@@ -8,11 +8,11 @@ RSpec.describe "Users_system", type: :system do
 
   describe 'userの情報が表示されてるか' do
     it "nameが表示されていること" do
-      expect(page).not_to have_content user.name
+      expect(page).to have_content user.name
     end
 
     it "idが表示されていること" do
-      expect(page).not_to have_content user.id
+      expect(page).to have_content user.id
     end
   end
 
