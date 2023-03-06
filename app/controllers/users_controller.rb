@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'ユーザーを新規登録しました'
       redirect_to :users
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
