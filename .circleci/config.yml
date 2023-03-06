@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:3.1.0
+      - image: circleci/ruby:3.1
     working_directory: ~/my_pf
     steps:
       - checkout:
@@ -15,7 +15,7 @@ jobs:
 
   rubocop:
     docker:
-      - image: circleci/ruby:3.1.0
+      - image: circleci/ruby:3.1
     working_directory: ~/my_pf
     steps:
       - checkout:
@@ -27,7 +27,7 @@ jobs:
 
   rspec:
     docker:
-      - image: circleci/ruby:3.1.0
+      - image: circleci/ruby:3.1
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: password
