@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe "バリデーションが効いているか" do
     it "nameがなければ登録でないこと" do
       user = User.new(name: nil)
