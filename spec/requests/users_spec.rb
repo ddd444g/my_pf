@@ -15,6 +15,10 @@ RSpec.describe "Users_request", type: :request do
     it 'ユーザー名が取得されていること' do
       expect(response.body).to include "test"
     end
+
+    it 'emailアドレスが取得されていること' do
+      expect(response.body).to include user.email
+    end
   end
 
   describe 'GET #show' do
@@ -28,6 +32,10 @@ RSpec.describe "Users_request", type: :request do
 
     it 'ユーザ名が取得されていること' do
       expect(response.body).to include user.name
+    end
+
+    it 'emailアドレスが取得されていること' do
+      expect(response.body).to include user.email
     end
   end
 
@@ -50,6 +58,10 @@ RSpec.describe "Users_request", type: :request do
     it 'ユーザー名が取得されていること' do
       expect(response.body).to include user.name
     end
+
+    it 'emailアドレスが取得されていること' do
+      expect(response.body).to include user.email
+    end
   end
 
   describe 'POST #create' do
@@ -70,23 +82,23 @@ RSpec.describe "Users_request", type: :request do
         expect(response).to redirect_to users_url
       end
     end
-  end
 
-  context 'パラメータが不正な場合' do
-    it '新規登録画面のままでいること' do
-      post users_url, params: { user: { name: nil } }
-      expect(response.status).to eq 422
-    end
-
-    it 'エラーメッセージが取得されるてこと' do
-      post users_url, params: { user: { name: nil } }
-      expect(response.body).to include "be blank"
-    end
-
-    it 'ユーザーが登録されないこと' do
-      expect do
+    context 'パラメータが不正な場合' do
+      it '新規登録画面のままでいること' do
         post users_url, params: { user: { name: nil } }
-      end.to_not change(User, :count)
+        expect(response.status).to eq 422
+      end
+
+      it 'エラーメッセージが取得されていること' do
+        post users_url, params: { user: { name: nil } }
+        expect(response.body).to include "be blank"
+      end
+
+      it 'ユーザーが登録されないこと' do
+        expect do
+          post users_url, params: { user: { name: nil } }
+        end.to_not change(User, :count)
+      end
     end
   end
 
@@ -141,7 +153,7 @@ RSpec.describe "Users_request", type: :request do
     end
 
     it 'ユーザー一覧にリダイレクトすること' do
-      delete user_url user
+      delete user_url user.id
       expect(response).to redirect_to users_url
     end
   end
