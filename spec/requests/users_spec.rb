@@ -91,7 +91,7 @@ RSpec.describe "Users_request", type: :request do
 
       it 'エラーメッセージが取得されていること' do
         post users_url, params: { user: { name: nil } }
-        expect(response.body).to include "be blank"
+        expect(response.body).to include "を入力してください"
       end
 
       it 'ユーザーが登録されないこと' do
@@ -130,7 +130,7 @@ RSpec.describe "Users_request", type: :request do
 
     it 'エラーメッセージが取得されるてこと' do
       put user_url user, params: { user: { name: nil } }
-      expect(response.body).to include "be blank"
+      expect(response.body).to include "を入力してください"
     end
 
     it 'ユーザー名が変更されないこと' do
