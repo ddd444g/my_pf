@@ -111,7 +111,7 @@ RSpec.describe "Users_request", type: :request do
 
       it 'ユーザー名が更新されること' do
         expect do
-          put user_url user, params: { user: { name: "test2" } }
+          put user_url user, params: { user: { name: "test2", password: "test_password" } }
         end.to change { User.find(user.id).name }.from('test').to('test2')
       end
 
@@ -153,7 +153,7 @@ RSpec.describe "Users_request", type: :request do
     end
 
     it 'ユーザー一覧にリダイレクトすること' do
-      delete user_url user.id
+      delete user_url user
       expect(response).to redirect_to users_url
     end
   end

@@ -11,6 +11,14 @@
       <th><%= f.label :email ,"emailアドレス" %></th>
       <td><%= f.text_field :email %></td>
     </tr>
+    <tr>
+      <th><%= f.label :password ,"パスワード" %></th>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password_confirmation, "パスワード(確認)" %></th>
+      <td><%= f.password_field :password_confirmation %></td>
+    </tr>
   </table>
 
   <div>
