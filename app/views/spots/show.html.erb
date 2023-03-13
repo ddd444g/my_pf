@@ -1,0 +1,39 @@
+<h3>投稿詳細</h3>
+
+<table>
+  <tr>
+    <th>投稿内容</th>
+    <td><pre><%= @spot.memo%></pre></td>
+  </tr>
+  <tr>
+    <th>更新日時</th>
+    <td><%= @spot.updated_at.to_s(:datetime_jp) %></td>
+  </tr>
+  <tr>
+    <th>投稿日時</th>
+    <td><%= @spot.created_at.to_s(:datetime_jp) %></td>
+  </tr>
+  <tr>
+    <th>投稿者(User_id)</th>
+    <td><%= @spot.user_id %></td>
+  </tr>
+</table>
+
+<h3>ユーザー詳細</h3>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <td><%= @spot.user.name %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @spot.user.email %></td>
+  </tr>
+</table>
+
+<div>
+  <ul>
+    <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>
+  </ul>
+</div>

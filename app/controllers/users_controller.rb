@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @spots = Spot.all
   end
 
   def new
@@ -19,6 +20,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @spot = Spot.new
+    @spots = @user.spots
   end
 
   def edit

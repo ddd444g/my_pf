@@ -1,0 +1,17 @@
+<h3>投稿編集</h3>
+ 
+<%= form_with model: @spot do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :memo, "投稿内容" %></th>
+      <td><%= f.text_area :memo ,class:"spots-memo" %></td>
+    </tr>
+  </table>
+ 
+  <div>
+    <ul>
+      <li><%= f.submit "編集を完了する" %></li>
+      <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>
+    </ul>
+  </div>
+<% end %>

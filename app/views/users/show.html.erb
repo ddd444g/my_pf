@@ -15,6 +15,47 @@
   </tr>
 </table>
 
+<h3>投稿一覧</h3>
+ 
+<table>
+  <thead>
+    <tr>
+      <th>投稿内容</th>
+      <th>更新日時</th>
+      <th>投稿日時</th>
+      <th>投稿者(User_id)</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <% @spots.each do |spot| %>
+      <tr>
+        <td><%= spot.memo %></td>
+        <td><%= spot.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= spot.created_at.to_s(:datetime_jp) %></td>
+        <td><%= spot.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>新規投稿</h3>
+ 
+<%= form_with model: @spot do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :memo, "一言memo" %></th>
+      <td><%= f.text_area :memo, class:"spots-memo" %></td>
+    </tr>
+  </table>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <div>
+    <ul>
+      <li><%= f.submit "投稿を完了する"%></li>
+    </ul>
+  </div>
+<% end %>
+
 <div>
   <ul>
     <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>

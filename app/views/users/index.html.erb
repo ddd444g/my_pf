@@ -2,35 +2,65 @@
 <% if flash[:notice] %>
   <p class="notice"><%= flash[:notice] %></p>
 <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>名前</th>
+      <th>emailアドレス</th>
+      <th>更新日</th>
+      <th>作成日</th>
+      <th>参照</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
  
- <table>
-   <thead>
-     <tr>
-       <th>id</th>
-       <th>名前</th>
-       <th>emailアドレス</th>
-       <th>更新日</th>
-       <th>作成日</th>
-       <th>参照</th>
-       <th>編集</th>
-       <th>削除</th>
-     </tr>
-   </thead>
- 
-   <tbody>
-     <% @users.each do |user| %>
-       <tr>
-         <td><%= user.id %></td>
-         <td><%= user.name %></td>
-         <td><%= user.email %></td>
-         <td><%= user.updated_at.to_fs(:datetime_jp) %></td>
-         <td><%= user.created_at.to_fs(:datetime_jp) %></td>
-         <td><%= link_to "参照", user %></td>
-         <td><%= link_to "編集", [:edit, user] %></td>
-         <td><%= button_to "削除", user, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
-       </tr>
-     <% end %>
-   </tbody>
- </table>
- 
- <p><%= link_to "ユーザー新規登録", :new_user %></p>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.updated_at.to_fs(:datetime_jp) %></td>
+        <td><%= user.created_at.to_fs(:datetime_jp) %></td>
+        <td><%= link_to "参照", user %></td>
+        <td><%= link_to "編集", [:edit, user] %></td>
+        <td><%= button_to "削除", user, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>投稿一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>memo</th>
+      <th>更新日時</th>
+      <th>投稿日時</th>
+      <th>投稿者(User_id)</th>
+      <th>参照</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spots.each do |spot| %>
+      <tr>
+        <td><%= spot.memo %></td>
+        <td><%= spot.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= spot.created_at.to_s(:datetime_jp) %></td>
+        <td><%= spot.user_id %></td>
+        <td><%= link_to "参照", spot %></td>
+        <td><%= link_to "編集", [:edit, spot] %></td>
+        <td><%= button_to "削除", spot, method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "ユーザー新規登録", :new_user %></p>
