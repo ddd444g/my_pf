@@ -1,6 +1,6 @@
 <h3>ユーザー新規作成</h3>
 <%= render "shared/error", obj: @user %>
- 
+
  <%= form_with model: @user do |f| %>
    <table>
      <tr>
@@ -20,7 +20,7 @@
        <td><%= f.password_field :password_confirmation %></td>
      </tr>
    </table>
- 
+
    <div>
      <ul>
        <li><%= f.submit "登録完了する"%></li>
