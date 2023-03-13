@@ -1,5 +1,5 @@
 <h3>投稿編集</h3>
- 
+
 <%= form_with model: @spot do |f| %>
   <table>
     <tr>
@@ -7,10 +7,10 @@
       <td><%= f.text_area :memo ,class:"spots-memo" %></td>
     </tr>
   </table>
- 
+
   <div>
     <ul>
-      <li><%= f.submit "編集を完了する" %></li>
+      <li><%= f.submit "編集を完了する", data: { turbo: false } %></li>
       <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>
     </ul>
   </div>

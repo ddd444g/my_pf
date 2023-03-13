@@ -16,7 +16,7 @@
       <th>削除</th>
     </tr>
   </thead>
- 
+
   <tbody>
     <% @users.each do |user| %>
       <tr>
@@ -38,6 +38,7 @@
 <table>
   <thead>
     <tr>
+      <th>登録名</th>
       <th>memo</th>
       <th>更新日時</th>
       <th>投稿日時</th>
@@ -51,6 +52,7 @@
   <tbody>
     <% @spots.each do |spot| %>
       <tr>
+        <td><%= spot.address %></td>
         <td><%= spot.memo %></td>
         <td><%= spot.updated_at.to_s(:datetime_jp) %></td>
         <td><%= spot.created_at.to_s(:datetime_jp) %></td>

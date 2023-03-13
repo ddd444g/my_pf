@@ -6,13 +6,13 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(params.require(:spot).permit(:memo, :user_id))
+    @spot = Spot.new(params.require(:spot).permit(:memo, :user_id, :address, :latitude, :longitude))
     if @spot.save
       flash[:notice] = "新規投稿をしました"
       redirect_to :users
     else
       @user = User.find_by(params[:spot][:user_id])
-      render "users/show", status: :unprocessable_entity
+      redirect_to new_spot_path, status: :unprocessable_entity
     end
   end
 
@@ -26,11 +26,11 @@ class SpotsController < ApplicationController
 
   def update
     @spot = Spot.find(params[:id])
-    if @spot.update(params.require(:spot).permit(:memo))
+    if @spot.update(params.require(:spot).permit(:memo, :address, :latitude, :longitude))
       flash[:notice] = "投稿を更新しました"
       redirect_to :users
     else
-      render 'edit', status: :unprocessable_entity
+      redirect_to edit_spot_path(@spot), status: :unprocessable_entity
     end
   end
 
